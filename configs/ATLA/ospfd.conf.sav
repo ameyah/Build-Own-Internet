@@ -1,10 +1,10 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 08:21:36
+!   2016/02/17 03:08:06
 !
 hostname G3_ATLA
 password G3_ATLA
-log file /var/log/quagga/bgpd_G3_ATLA.log
+log file /var/log/quagga/ospfd_G3_ATLA.log
 !
 line vty
 !
