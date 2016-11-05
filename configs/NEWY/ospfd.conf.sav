@@ -1,0 +1,28 @@
+!
+! Zebra configuration saved from vty
+!   2016/11/05 07:08:13
+!
+hostname G3_NEWY
+password G3_NEWY
+log file /var/log/quagga/ospfd_G3_NEWY.log
+!
+!
+!
+interface chic
+ ip ospf cost 1000
+!
+interface ebgp_peer
+!
+interface host
+!
+interface lo
+!
+interface wash
+ ip ospf cost 277
+!
+router ospf
+ network 3.0.1.0/24 area 0.0.0.0
+ network 3.0.4.0/24 area 0.0.0.0
+!
+line vty
+!
