@@ -1,10 +1,29 @@
 !
 ! Zebra configuration saved from vty
-!   2016/02/17 03:08:06
-!
+!   2016/11/05 08:40:01
 !
 hostname G3_SEAT
 password G3_SEAT
+!
+interface ebgp_peer
+ ipv6 nd suppress-ra
+!
+interface host
+ ip address 3.109.0.2/24
+ ipv6 nd suppress-ra
+!
+interface lo
+!
+interface losa
+ ip address 3.0.13.2/24
+ ipv6 nd suppress-ra
+!
+interface salt
+ ip address 3.0.12.2/24
+ ipv6 nd suppress-ra
+!
+ip forwarding
+!
 !
 line vty
 !
