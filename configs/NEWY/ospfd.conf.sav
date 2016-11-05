@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 07:08:13
+!   2016/11/05 07:33:10
 !
 hostname G3_NEWY
 password G3_NEWY
@@ -23,6 +23,7 @@ interface wash
 router ospf
  network 3.0.1.0/24 area 0.0.0.0
  network 3.0.4.0/24 area 0.0.0.0
+ network 3.101.0.0/24 area 0.0.0.0
 !
 line vty
 !
