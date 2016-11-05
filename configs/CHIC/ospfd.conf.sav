@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 07:15:32
+!   2016/11/05 19:13:39
 !
 hostname G3_CHIC
 password G3_CHIC
@@ -29,6 +29,7 @@ router ospf
  network 3.0.2.0/24 area 0.0.0.0
  network 3.0.3.0/24 area 0.0.0.0
  network 3.0.6.0/24 area 0.0.0.0
+ network 3.102.0.0/24 area 0.0.0.0
 !
 line vty
 !

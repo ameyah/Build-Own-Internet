@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 17:55:27
+!   2016/11/05 18:53:44
 !
 hostname G3_LOSA
 password G3_LOSA
@@ -23,7 +23,7 @@ interface salt
  ip ospf cost 1303
 !
 interface seat
- ip ospf cost 1342
+ ip ospf cost 866
 !
 router ospf
  network 3.0.10.0/24 area 0.0.0.0

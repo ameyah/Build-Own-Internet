@@ -1,11 +1,21 @@
 !
 ! Zebra configuration saved from vty
-!   2016/02/17 03:08:06
-!
-log file /var/log/quagga/bgpd_G3_WASH.log
+!   2016/11/05 18:48:46
 !
 hostname G3_WASH
 password G3_WASH
+log file /var/log/quagga/bgpd_G3_WASH.log
+!
+router bgp 3
+ bgp router-id 3.103.0.2
+ neighbor 3.101.0.1 remote-as 3
+ neighbor 3.102.0.1 remote-as 3
+ neighbor 3.104.0.1 remote-as 3
+ neighbor 3.105.0.1 remote-as 3
+ neighbor 3.106.0.1 remote-as 3
+ neighbor 3.107.0.1 remote-as 3
+ neighbor 3.108.0.1 remote-as 3
+ neighbor 3.109.0.1 remote-as 3
 !
 line vty
 !
