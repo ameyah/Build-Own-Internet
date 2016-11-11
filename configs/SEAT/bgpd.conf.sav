@@ -1,21 +1,39 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 18:54:31
+!   2016/11/11 02:40:53
 !
 hostname G3_SEAT
 password G3_SEAT
 log file /var/log/quagga/bgpd_G3_SEAT.log
 !
 router bgp 3
- bgp router-id 3.0.13.2
- neighbor 3.101.0.1 remote-as 3
- neighbor 3.102.0.1 remote-as 3
- neighbor 3.103.0.1 remote-as 3
- neighbor 3.104.0.1 remote-as 3
- neighbor 3.105.0.1 remote-as 3
- neighbor 3.106.0.1 remote-as 3
- neighbor 3.107.0.1 remote-as 3
- neighbor 3.108.0.1 remote-as 3
+ bgp router-id 3.109.0.2
+ network 3.0.0.0/8
+ neighbor 3.101.0.2 remote-as 3
+ neighbor 3.101.0.2 update-source host
+ neighbor 3.101.0.2 next-hop-self
+ neighbor 3.102.0.2 remote-as 3
+ neighbor 3.102.0.2 update-source host
+ neighbor 3.102.0.2 next-hop-self
+ neighbor 3.103.0.2 remote-as 3
+ neighbor 3.103.0.2 update-source host
+ neighbor 3.103.0.2 next-hop-self
+ neighbor 3.104.0.2 remote-as 3
+ neighbor 3.104.0.2 update-source host
+ neighbor 3.104.0.2 next-hop-self
+ neighbor 3.105.0.2 remote-as 3
+ neighbor 3.105.0.2 update-source host
+ neighbor 3.105.0.2 next-hop-self
+ neighbor 3.106.0.2 remote-as 3
+ neighbor 3.106.0.2 update-source host
+ neighbor 3.106.0.2 next-hop-self
+ neighbor 3.107.0.2 remote-as 3
+ neighbor 3.107.0.2 update-source host
+ neighbor 3.107.0.2 next-hop-self
+ neighbor 3.108.0.2 remote-as 3
+ neighbor 3.108.0.2 update-source host
+ neighbor 3.108.0.2 next-hop-self
+ neighbor 179.24.8.1 remote-as 15
 !
 line vty
 !
