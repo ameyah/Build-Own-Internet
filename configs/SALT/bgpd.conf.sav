@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/11 02:36:57
+!   2016/11/27 01:24:00
 !
 hostname G3_SALT
 password G3_SALT
@@ -33,7 +33,20 @@ router bgp 3
  neighbor 3.109.0.2 remote-as 3
  neighbor 3.109.0.2 update-source host
  neighbor 3.109.0.2 next-hop-self
- neighbor 179.24.2.1 remote-as 4
+ neighbor 179.24.7.1 remote-as 4
+ neighbor 179.24.7.1 route-map novalleyin in
+ neighbor 179.24.7.1 route-map novalleyout out
+!
+ip community-list standard novalley deny 3:20
+!
+route-map novalleyin permit 10
+ set community 3:20
+!
+route-map novalleyout deny 10
+ match community novalley
+!
+route-map novalleyout permit 100
+ set local-preference 110
 !
 line vty
 !

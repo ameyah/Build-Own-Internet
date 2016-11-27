@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/11 02:40:21
+!   2016/11/27 01:16:57
 !
 hostname G3_NEWY
 password G3_NEWY
@@ -22,6 +22,12 @@ interface lo
 interface wash
  ip address 3.0.4.1/24
  ipv6 nd suppress-ra
+!
+route-map novalleyin permit 10
+!
+route-map novalleyout deny 10
+!
+route-map novalleyout permit 100
 !
 ip forwarding
 !

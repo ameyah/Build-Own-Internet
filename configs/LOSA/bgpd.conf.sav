@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 20:44:51
+!   2016/11/27 01:49:13
 !
 hostname G3_LOSA
 password G3_LOSA
@@ -8,6 +8,7 @@ log file /var/log/quagga/bgpd_G3_LOSA.log
 !
 router bgp 3
  bgp router-id 3.108.0.2
+ network 3.0.0.0/8
  neighbor 3.101.0.2 remote-as 3
  neighbor 3.101.0.2 update-source host
  neighbor 3.101.0.2 next-hop-self
@@ -32,6 +33,15 @@ router bgp 3
  neighbor 3.109.0.2 remote-as 3
  neighbor 3.109.0.2 update-source host
  neighbor 3.109.0.2 next-hop-self
+ neighbor 179.24.10.1 remote-as 18
+ neighbor 179.24.10.1 route-map prefercustin in
+ neighbor 179.24.10.1 route-map prefercustout out
+!
+route-map prefercustin permit 1
+ set community 3:50
+ set local-preference 1000
+!
+route-map prefercustout permit 100
 !
 line vty
 !

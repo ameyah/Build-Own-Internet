@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/11 02:40:53
+!   2016/11/27 01:24:58
 !
 hostname G3_SEAT
 password G3_SEAT
@@ -26,6 +26,12 @@ router ospf
  network 3.0.12.0/24 area 0.0.0.0
  network 3.0.13.0/24 area 0.0.0.0
  network 3.109.0.0/24 area 0.0.0.0
+!
+route-map novalleyin permit 10
+!
+route-map novalleyout deny 10
+!
+route-map novalleyout permit 100
 !
 line vty
 !

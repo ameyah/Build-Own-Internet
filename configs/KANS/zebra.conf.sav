@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 20:40:54
+!   2016/11/27 08:46:58
 !
 hostname G3_KANS
 password G3_KANS
@@ -10,6 +10,7 @@ interface chic
  ipv6 nd suppress-ra
 !
 interface ebgp_peer
+ ip address 179.24.9.2/24
  ipv6 nd suppress-ra
 !
 interface host
@@ -28,6 +29,12 @@ interface lo
 interface salt
  ip address 3.0.9.1/24
  ipv6 nd suppress-ra
+!
+route-map prefercustin permit 1
+!
+route-map prefercustout permit 20
+!
+route-map prefercustout permit 100
 !
 ip forwarding
 !

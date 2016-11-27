@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/05 20:40:54
+!   2016/11/27 08:46:58
 !
 hostname G3_KANS
 password G3_KANS
@@ -30,6 +30,12 @@ router ospf
  network 3.0.8.0/24 area 0.0.0.0
  network 3.0.9.0/24 area 0.0.0.0
  network 3.105.0.0/24 area 0.0.0.0
+!
+route-map prefercustin permit 1
+!
+route-map prefercustout permit 20
+!
+route-map prefercustout permit 100
 !
 line vty
 !

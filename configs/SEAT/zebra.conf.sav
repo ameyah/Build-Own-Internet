@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/11 02:40:53
+!   2016/11/27 01:24:57
 !
 hostname G3_SEAT
 password G3_SEAT
@@ -25,6 +25,12 @@ interface losa
 interface salt
  ip address 3.0.12.2/24
  ipv6 nd suppress-ra
+!
+route-map novalleyin permit 10
+!
+route-map novalleyout deny 10
+!
+route-map novalleyout permit 100
 !
 ip forwarding
 !

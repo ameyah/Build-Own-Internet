@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/11 02:36:57
+!   2016/11/27 01:24:00
 !
 hostname G3_SALT
 password G3_SALT
@@ -28,6 +28,12 @@ router ospf
  network 3.0.11.0/24 area 0.0.0.0
  network 3.0.12.0/24 area 0.0.0.0
  network 3.107.0.0/24 area 0.0.0.0
+!
+route-map novalleyin permit 10
+!
+route-map novalleyout deny 10
+!
+route-map novalleyout permit 100
 !
 line vty
 !
