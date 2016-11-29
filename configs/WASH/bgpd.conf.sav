@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/27 07:56:22
+!   2016/11/29 01:27:57
 !
 hostname G3_WASH
 password G3_WASH
@@ -45,6 +45,8 @@ router bgp 3
  neighbor 179.24.0.1 route-map novalleyin in
  neighbor 179.24.0.1 route-map novalleyout out
 !
+ip prefix-list ownprefix seq 5 permit 3.0.0.0/8 le 32
+!
 ip community-list standard novalley permit 3:20
 ip community-list standard prefercust permit 3:50
 !
@@ -54,11 +56,19 @@ route-map novalleyin permit 10
 route-map novalleyout deny 20
  match community novalley
 !
+route-map novalleyout permit 30
+ match ip address prefix-list ownprefix
+ set as-path prepend 3 3 3 3
+!
 route-map novalleyout permit 100
 !
 route-map prefercustout permit 1
  match community prefercust
  set local-preference 1000
+!
+route-map prefercustout permit 5
+!
+route-map prefercustout permit 200
 !
 line vty
 !

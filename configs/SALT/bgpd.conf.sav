@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/27 01:24:00
+!   2016/11/29 01:25:33
 !
 hostname G3_SALT
 password G3_SALT
@@ -12,41 +12,79 @@ router bgp 3
  neighbor 3.101.0.2 remote-as 3
  neighbor 3.101.0.2 update-source host
  neighbor 3.101.0.2 next-hop-self
+ neighbor 3.101.0.2 route-map prefercustout in
  neighbor 3.102.0.2 remote-as 3
  neighbor 3.102.0.2 update-source host
  neighbor 3.102.0.2 next-hop-self
+ neighbor 3.102.0.2 route-map prefercustout in
  neighbor 3.103.0.2 remote-as 3
  neighbor 3.103.0.2 update-source host
  neighbor 3.103.0.2 next-hop-self
+ neighbor 3.103.0.2 route-map prefercustout in
  neighbor 3.104.0.2 remote-as 3
  neighbor 3.104.0.2 update-source host
  neighbor 3.104.0.2 next-hop-self
+ neighbor 3.104.0.2 route-map prefercustout in
  neighbor 3.105.0.2 remote-as 3
  neighbor 3.105.0.2 update-source host
  neighbor 3.105.0.2 next-hop-self
+ neighbor 3.105.0.2 route-map prefercustout in
  neighbor 3.106.0.2 remote-as 3
  neighbor 3.106.0.2 update-source host
  neighbor 3.106.0.2 next-hop-self
+ neighbor 3.106.0.2 route-map prefercustout in
  neighbor 3.108.0.2 remote-as 3
  neighbor 3.108.0.2 update-source host
  neighbor 3.108.0.2 next-hop-self
+ neighbor 3.108.0.2 route-map prefercustout in
  neighbor 3.109.0.2 remote-as 3
  neighbor 3.109.0.2 update-source host
  neighbor 3.109.0.2 next-hop-self
+ neighbor 3.109.0.2 route-map prefercustout in
  neighbor 179.24.7.1 remote-as 4
  neighbor 179.24.7.1 route-map novalleyin in
  neighbor 179.24.7.1 route-map novalleyout out
 !
-ip community-list standard novalley deny 3:20
+ip prefix-list ownprefix seq 5 permit 3.0.0.0/8 le 32
+ip prefix-list tag10 seq 5 permit 6.0.0.0/8 le 32
+ip prefix-list tag10 seq 10 permit 9.0.0.0/8 le 32
+ip prefix-list tag10 seq 15 permit 10.0.0.0/8 le 32
+ip prefix-list tag10 seq 20 permit 11.0.0.0/8 le 32
+ip prefix-list tag15 seq 5 permit 1.0.0.0/8 le 32
+ip prefix-list tag15 seq 10 permit 2.0.0.0/8 le 32
+ip prefix-list tag15 seq 15 permit 4.0.0.0/8 le 32
+ip prefix-list tag15 seq 20 permit 5.0.0.0/8 le 32
+!
+ip community-list standard novalley permit 3:20
+ip community-list standard prefercust permit 3:50
+!
+route-map novalleyin permit 5
+ match ip address prefix-list tag15
+ set community 3:15 3:20
+ set local-preference 150
+!
+route-map novalleyin permit 8
+ match ip address prefix-list tag10
+ set community 3:10 3:20
+ set local-preference 120
 !
 route-map novalleyin permit 10
  set community 3:20
 !
-route-map novalleyout deny 10
+route-map novalleyout deny 20
  match community novalley
 !
+route-map novalleyout permit 30
+ match ip address prefix-list ownprefix
+ set as-path prepend 3 3 3 3
+!
 route-map novalleyout permit 100
- set local-preference 110
+!
+route-map prefercustout permit 1
+ match community prefercust
+ set local-preference 1000
+!
+route-map prefercustout permit 200
 !
 line vty
 !

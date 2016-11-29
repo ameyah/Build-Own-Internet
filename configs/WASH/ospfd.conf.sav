@@ -1,6 +1,6 @@
 !
 ! Zebra configuration saved from vty
-!   2016/11/27 07:56:22
+!   2016/11/29 01:27:57
 !
 hostname G3_WASH
 password G3_WASH
@@ -29,13 +29,22 @@ router ospf
  network 3.0.5.0/24 area 0.0.0.0
  network 3.103.0.0/24 area 0.0.0.0
 !
+ip prefix-list ownprefix seq 5 permit 3.0.0.0/8 le 32
+!
 route-map novalleyin permit 10
 !
 route-map novalleyout deny 20
 !
+route-map novalleyout permit 30
+ match ip address prefix-list ownprefix
+!
 route-map novalleyout permit 100
 !
 route-map prefercustout permit 1
+!
+route-map prefercustout permit 5
+!
+route-map prefercustout permit 200
 !
 line vty
 !
