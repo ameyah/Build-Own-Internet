@@ -1,0 +1,62 @@
+!
+! Zebra configuration saved from vty
+!   2016/11/29 01:25:33
+!
+hostname G3_SALT
+password G3_SALT
+log file /var/log/quagga/ospfd_G3_SALT.log
+!
+!
+!
+interface ebgp_peer
+!
+interface host
+!
+interface kans
+ ip ospf cost 1330
+!
+interface lo
+!
+interface losa
+ ip ospf cost 1303
+!
+interface seat
+ ip ospf cost 913
+!
+router ospf
+ network 3.0.9.0/24 area 0.0.0.0
+ network 3.0.11.0/24 area 0.0.0.0
+ network 3.0.12.0/24 area 0.0.0.0
+ network 3.107.0.0/24 area 0.0.0.0
+!
+ip prefix-list ownprefix seq 5 permit 3.0.0.0/8 le 32
+ip prefix-list tag10 seq 5 permit 6.0.0.0/8 le 32
+ip prefix-list tag10 seq 10 permit 9.0.0.0/8 le 32
+ip prefix-list tag10 seq 15 permit 10.0.0.0/8 le 32
+ip prefix-list tag10 seq 20 permit 11.0.0.0/8 le 32
+ip prefix-list tag15 seq 5 permit 1.0.0.0/8 le 32
+ip prefix-list tag15 seq 10 permit 2.0.0.0/8 le 32
+ip prefix-list tag15 seq 15 permit 4.0.0.0/8 le 32
+ip prefix-list tag15 seq 20 permit 5.0.0.0/8 le 32
+!
+route-map novalleyin permit 5
+ match ip address prefix-list tag15
+!
+route-map novalleyin permit 8
+ match ip address prefix-list tag10
+!
+route-map novalleyin permit 10
+!
+route-map novalleyout deny 20
+!
+route-map novalleyout permit 30
+ match ip address prefix-list ownprefix
+!
+route-map novalleyout permit 100
+!
+route-map prefercustout permit 1
+!
+route-map prefercustout permit 200
+!
+line vty
+!

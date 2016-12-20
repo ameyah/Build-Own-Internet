@@ -1,0 +1,45 @@
+!
+! Zebra configuration saved from vty
+!   2016/11/29 01:29:35
+!
+hostname G3_LOSA
+password G3_LOSA
+log file /var/log/quagga/ospfd_G3_LOSA.log
+!
+!
+!
+interface ebgp_peer
+!
+interface hos
+!
+interface host
+!
+interface hous
+ ip ospf cost 705
+!
+interface lo
+!
+interface salt
+ ip ospf cost 1303
+!
+interface seat
+ ip ospf cost 866
+!
+router ospf
+ network 3.0.10.0/24 area 0.0.0.0
+ network 3.0.11.0/24 area 0.0.0.0
+ network 3.0.13.0/24 area 0.0.0.0
+ network 3.108.0.0/24 area 0.0.0.0
+!
+route-map prefercustin permit 1
+!
+route-map prefercustout permit 100
+!
+route-map prefercustinibgp permit 20
+!
+route-map prefercustinibgp permit 200
+!
+route-map prefercustoutibgp permit 30
+!
+line vty
+!

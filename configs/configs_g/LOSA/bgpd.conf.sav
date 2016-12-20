@@ -1,0 +1,73 @@
+!
+! Zebra configuration saved from vty
+!   2016/11/29 01:29:35
+!
+hostname G3_LOSA
+password G3_LOSA
+log file /var/log/quagga/bgpd_G3_LOSA.log
+!
+router bgp 3
+ bgp router-id 3.108.0.2
+ network 3.0.0.0/8
+ neighbor 3.101.0.2 remote-as 3
+ neighbor 3.101.0.2 update-source host
+ neighbor 3.101.0.2 next-hop-self
+ neighbor 3.101.0.2 route-map prefercustinibgp in
+ neighbor 3.101.0.2 route-map prefercustoutibgp out
+ neighbor 3.102.0.2 remote-as 3
+ neighbor 3.102.0.2 update-source host
+ neighbor 3.102.0.2 next-hop-self
+ neighbor 3.102.0.2 route-map prefercustinibgp in
+ neighbor 3.102.0.2 route-map prefercustoutibgp out
+ neighbor 3.103.0.2 remote-as 3
+ neighbor 3.103.0.2 update-source host
+ neighbor 3.103.0.2 next-hop-self
+ neighbor 3.103.0.2 route-map prefercustinibgp in
+ neighbor 3.103.0.2 route-map prefercustoutibgp out
+ neighbor 3.104.0.2 remote-as 3
+ neighbor 3.104.0.2 update-source host
+ neighbor 3.104.0.2 next-hop-self
+ neighbor 3.104.0.2 route-map prefercustinibgp in
+ neighbor 3.104.0.2 route-map prefercustoutibgp out
+ neighbor 3.105.0.2 remote-as 3
+ neighbor 3.105.0.2 update-source host
+ neighbor 3.105.0.2 next-hop-self
+ neighbor 3.105.0.2 route-map prefercustinibgp in
+ neighbor 3.105.0.2 route-map prefercustoutibgp out
+ neighbor 3.106.0.2 remote-as 3
+ neighbor 3.106.0.2 update-source host
+ neighbor 3.106.0.2 next-hop-self
+ neighbor 3.106.0.2 route-map prefercustinibgp in
+ neighbor 3.106.0.2 route-map prefercustoutibgp out
+ neighbor 3.107.0.2 remote-as 3
+ neighbor 3.107.0.2 update-source host
+ neighbor 3.107.0.2 next-hop-self
+ neighbor 3.107.0.2 route-map prefercustinibgp in
+ neighbor 3.107.0.2 route-map prefercustoutibgp out
+ neighbor 3.109.0.2 remote-as 3
+ neighbor 3.109.0.2 update-source host
+ neighbor 3.109.0.2 next-hop-self
+ neighbor 3.109.0.2 route-map prefercustinibgp in
+ neighbor 3.109.0.2 route-map prefercustoutibgp out
+ neighbor 179.24.10.1 remote-as 18
+ neighbor 179.24.10.1 route-map prefercustin in
+ neighbor 179.24.10.1 route-map prefercustout out
+!
+ip community-list standard prefercust permit 3:50
+!
+route-map prefercustin permit 1
+ set community 3:50
+ set local-preference 1000
+!
+route-map prefercustout permit 100
+!
+route-map prefercustinibgp permit 20
+ match community prefercust
+ set local-preference 1000
+!
+route-map prefercustinibgp permit 200
+!
+route-map prefercustoutibgp permit 30
+!
+line vty
+!

@@ -1,0 +1,34 @@
+!
+! Zebra configuration saved from vty
+!   2016/11/05 18:51:53
+!
+hostname G3_HOUS
+password G3_HOUS
+log file /var/log/quagga/ospfd_G3_HOUS.log
+!
+!
+!
+interface atla
+ ip ospf cost 1385
+!
+interface host
+!
+interface kans
+ ip ospf cost 818
+!
+interface lo
+!
+interface losa
+ ip ospf cost 705
+!
+interface mgt
+!
+router ospf
+ network 3.0.7.0/24 area 0.0.0.0
+ network 3.0.8.0/24 area 0.0.0.0
+ network 3.0.10.0/24 area 0.0.0.0
+ network 3.0.199.0/24 area 0.0.0.0
+ network 3.106.0.0/24 area 0.0.0.0
+!
+line vty
+!
